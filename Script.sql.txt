@@ -1,0 +1,122 @@
+CREATE DATABASE IF NOT EXISTS Banelco; 
+USE Banelco;
+CREATE TABLE Banco(
+    ID_Banco INT NOT NULL AUTO_INCREMENT,
+    Banco_Nombre VARCHAR(255) NOT NULL,
+    Banco_Codigo VARCHAR(3) NOT NULL,
+    PRIMARY KEY(ID_Banco)
+); 
+CREATE TABLE Usuario(
+    ID_Usuario INT NOT NULL AUTO_INCREMENT,
+    CUIT INT NOT NULL,
+    Nombre VARCHAR(255) NULL,
+    Apellido VARCHAR(255) NULL,
+    PRIMARY KEY(ID_Usuario)
+); 
+CREATE TABLE Usuario_Cuenta(
+    ID_Cuenta INT NOT NULL AUTO_INCREMENT,
+    ID_Usuario INT NOT NULL,
+    ID_Banco INT NOT NULL,
+    CBU INT(22) NOT NULL,
+	Saldo FLOAT NOT NULL,
+    Fecha_Alta DATE NULL,
+    codigoComercio VARCHAR(8) NOT NULL,
+    PRIMARY KEY(ID_Cuenta),
+CONSTRAINT FK_Usuario
+FOREIGN KEY(ID_Usuario)
+REFERENCES Usuario(ID_Usuario),
+CONSTRAINT FK_Banco
+FOREIGN KEY(ID_Banco)
+REFERENCES Banco(ID_Banco)
+); 
+
+CREATE TABLE Movimiento_Tipo(
+    ID_Tipo INT NOT NULL AUTO_INCREMENT,
+    Nombre_Movimiento VARCHAR(255) NOT NULL,
+    Fecha_Alta DATE NULL,
+    PRIMARY KEY(ID_Tipo)
+); 
+CREATE TABLE Usuario_Movimiento(
+    ID_Movimiento INT NOT NULL AUTO_INCREMENT,
+    ID_Tipo INT NOT NULL,
+    ID_Cuenta INT NOT NULL,
+	Monto_Mov FLOAT NOT NULL,
+    Fecha_Movimiento DATE NULL,
+    ID_Cuenta_Destino INT NULL,
+    PRIMARY KEY(ID_Movimiento),
+CONSTRAINT FK_Movimiento
+FOREIGN KEY(ID_Tipo)
+REFERENCES Movimiento_Tipo(ID_Tipo),
+  CONSTRAINT FK_Cuenta
+FOREIGN KEY(ID_Cuenta)
+REFERENCES Usuario_Cuenta(ID_Cuenta)
+);
+
+CREATE USER 'springuser'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRANT ALL PRIVILEGES ON *.* TO 'springuser'@'%' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `banelco`.* TO 'springuser'@'%';
+
+SET GLOBAL time_zone = '-3:00';
+
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO GALICIA","007");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE LA NACION ARGENTINA","011");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE LA PROVINCIA DE BS.AS.","014");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("ICBC","015");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO SANTANDER(ex Citibank)","016");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BBVA BANCO FRANCES","017");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE CORDOBA","020");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO SUPERVIELLE","027");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO CIUDAD DE BUENOS AIRES","029");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO PATAGONIA","034");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO HIPOTECARIO","044");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE SAN JUAN","045");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DEL TUCUMAN","060");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO MUNICIPAL DE ROSARIO","065");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("CONSUMAX","066");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO SANTANDER","072");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("EFECTIVO SI","077");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DEL CHUBUT","083");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO SANTA CRUZ","086");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE LA PAMPA","093");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE CORRIENTES","094");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO PROVINCIA DE NEUQUEN","097");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("PROVENCRED","121");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BRUBANK","143");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO MUNICIPAL DE LA PLATA","148");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("HSBC BANK ARGENTINA","150");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO CREDICOOP","191");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO ITAU ARGENTINA","259");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE TIERRA DEL FUEGO","268");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE LA REP. ORIENTAL DEL URUGUAY","269");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO SAENZ","277");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO MACRO","285");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO COMAFI","299");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO PIANO","301");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO FINANSUR","303");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("NUEVO BANCO DE LA RIOJA","309");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DEL SOL","310");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("NUEVO BANCO DEL CHACO","311");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE FORMOSA","315");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO DE SANTIAGO DEL ESTERO","321");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BIND","322");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("NUEVO BANCO DE SANTA FE","330");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO CETELEM","331");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BST","338");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO MAS VENTAS","341");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("NUEVO BANCO DE ENTRE RIOS","386");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("COLUMBIA","389");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("NATIVA NACION","416");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO BICA","426");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO COINAG","431");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("TARJETA NARANJA","450");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("NEVADA","455");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO FUEGUINA","468");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO CAJA POPULAR DE TUCUMAN","488");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("MIRA","499");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("TARSHOP","515");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("AMEX","800");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("NARANJA","801");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("CREDIMAS","802");
+INSERT INTO banco (Banco_Nombre,Banco_Codigo) values("BANCO PATAGONIA","900");
+
+INSERT INTO Movimiento_Tipo(Nombre_Movimiento,Fecha_Alta)VALUES("Transferencia",Now());
+INSERT INTO Movimiento_Tipo(Nombre_Movimiento,Fecha_Alta)VALUES("Cashin",Now());
+INSERT INTO Movimiento_Tipo(Nombre_Movimiento,Fecha_Alta)VALUES("Cashout",Now());

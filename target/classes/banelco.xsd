@@ -1,0 +1,189 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservices.bp.banelco.com/" xmlns:tns="http://webservices.bp.banelco.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="cuenta" type="tns:cuentaDTO"/>
+    <xs:complexType abstract="true" name="dto">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="terminalDTO">
+        <xs:complexContent>
+            <xs:extension base="tns:dto">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="canal" type="xs:string"/>
+                    <xs:element minOccurs="0" name="datosTerminal" type="xs:string"/>
+                    <xs:element minOccurs="0" name="direccionIP" type="xs:string"/>
+                    <xs:element minOccurs="0" name="terminal" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="titularidadDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ctaDestino" type="tns:cuentaDTO"/>
+            <xs:element minOccurs="0" name="cuits">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="cuit" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="fiidBanco" type="xs:string"/>
+            <xs:element minOccurs="0" name="fiidOrigenLink" type="xs:string"/>
+            <xs:element minOccurs="0" name="nombreBanco" type="xs:string"/>
+            <xs:element minOccurs="0" name="nombreTitular" type="xs:string"/>
+            <xs:element minOccurs="0" name="referencia" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="cuentaDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="moneda" type="xs:string"/>
+            <xs:element minOccurs="0" name="numero" type="xs:string"/>
+            <xs:element minOccurs="0" name="numeroCBU" type="xs:string"/>
+            <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ticketDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="fecha" type="xs:string"/>
+            <xs:element minOccurs="0" name="hora" type="xs:string"/>
+            <xs:element minOccurs="0" name="nroControl" type="xs:string"/>
+            <xs:element minOccurs="0" name="nroTransaccion" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BotonDePagoWebServiceException" type="tns:BotonDePagoWebServiceException"/>
+    <xs:complexType name="BotonDePagoWebServiceException">
+        <xs:sequence>
+            <xs:element name="code" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="registrarCuenta" type="tns:registrarCuenta"/>
+    <xs:complexType name="registrarCuenta">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="terminal" type="tns:terminalDTO"/>
+            <xs:element minOccurs="0" name="codigoComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="cuitComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="cbuDestino" type="xs:string"/>
+            <xs:element minOccurs="0" name="moneda" type="xs:string"/>
+            <xs:element name="importe" type="xs:double"/>
+            <xs:element minOccurs="0" name="nroSecuencia" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="registrarCuentaResponse" type="tns:registrarCuentaResponse"/>
+    <xs:complexType name="registrarCuentaResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="titularidad" type="tns:titularidadDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="validarCuenta" type="tns:validarCuenta"/>
+    <xs:complexType name="validarCuenta">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="terminal" type="tns:terminalDTO"/>
+            <xs:element minOccurs="0" name="codigoComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="CUITComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="cbuDestino" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="validarCuentaResponse" type="tns:validarCuentaResponse"/>
+    <xs:complexType name="validarCuentaResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="titularidad" type="tns:titularidadDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="verificarTransferenciaVirtual" type="tns:verificarTransferenciaVirtual"/>
+    <xs:complexType name="verificarTransferenciaVirtual">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="terminal" type="tns:terminalDTO"/>
+            <xs:element minOccurs="0" name="codigoComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="CUITComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="cbuDestino" type="xs:string"/>
+            <xs:element minOccurs="0" name="moneda" type="xs:string"/>
+            <xs:element name="importe" type="xs:double"/>
+            <xs:element minOccurs="0" name="nroSecuencia" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="verificarTransferenciaVirtualResponse" type="tns:verificarTransferenciaVirtualResponse"/>
+    <xs:complexType name="verificarTransferenciaVirtualResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ticket" type="tns:ticketDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="validarCuentaExtendido" type="tns:validarCuentaExtendido"/>
+    <xs:complexType name="validarCuentaExtendido">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="terminal" type="tns:terminalDTO"/>
+            <xs:element minOccurs="0" name="codigoComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="CUITComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="aliasDestino" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="validarCuentaExtendidoResponse" type="tns:validarCuentaExtendidoResponse"/>
+    <xs:complexType name="validarCuentaExtendidoResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="titularidad" type="tns:titularidadDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="verificarCashOut" type="tns:verificarCashOut"/>
+    <xs:complexType name="verificarCashOut">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="terminal" type="tns:terminalDTO"/>
+            <xs:element minOccurs="0" name="codigoComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="CUITComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="cbuDestino" type="xs:string"/>
+            <xs:element minOccurs="0" name="moneda" type="xs:string"/>
+            <xs:element name="importe" type="xs:double"/>
+            <xs:element minOccurs="0" name="nroSecuencia" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="verificarCashOutResponse" type="tns:verificarCashOutResponse"/>
+    <xs:complexType name="verificarCashOutResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ticket" type="tns:ticketDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="echoTest" type="tns:echoTest"/>
+    <xs:complexType name="echoTest">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="echoTestResponse" type="tns:echoTestResponse"/>
+    <xs:complexType name="echoTestResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="resultado" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="realizarCashOut" type="tns:realizarCashOut"/>
+    <xs:complexType name="realizarCashOut">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="terminal" type="tns:terminalDTO"/>
+            <xs:element minOccurs="0" name="codigoComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="CUITComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="cbuDestino" type="xs:string"/>
+            <xs:element minOccurs="0" name="moneda" type="xs:string"/>
+            <xs:element name="importe" type="xs:double"/>
+            <xs:element minOccurs="0" name="nroSecuencia" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="realizarCashOutResponse" type="tns:realizarCashOutResponse"/>
+    <xs:complexType name="realizarCashOutResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ticket" type="tns:ticketDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="transferenciaVirtual" type="tns:transferenciaVirtual"/>
+    <xs:complexType name="transferenciaVirtual">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="terminal" type="tns:terminalDTO"/>
+            <xs:element minOccurs="0" name="codigoComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="CUITComercio" type="xs:string"/>
+            <xs:element minOccurs="0" name="cbuDestino" type="xs:string"/>
+            <xs:element minOccurs="0" name="moneda" type="xs:string"/>
+            <xs:element name="importe" type="xs:double"/>
+            <xs:element minOccurs="0" name="nroSecuencia" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="transferenciaVirtualResponse" type="tns:transferenciaVirtualResponse"/>
+    <xs:complexType name="transferenciaVirtualResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ticket" type="tns:ticketDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
