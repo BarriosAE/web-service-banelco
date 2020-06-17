@@ -14,7 +14,7 @@ public class UsuarioCuenta {
     private Integer idUsuario;
     private Integer idBanco;
     private Integer CBU;
-    private Integer saldo;
+    private Float saldo;
     private Date fechaAlta;
     private String codigoComercio;
 
@@ -62,7 +62,7 @@ public class UsuarioCuenta {
         this.codigoComercio = codigoComercio;
     }
 
-    public Integer getSaldo() {
+    public Float getSaldo() {
         return saldo;
     }
 

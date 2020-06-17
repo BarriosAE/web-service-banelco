@@ -15,7 +15,7 @@ public class UsuarioMovimiento {
     private Integer idTipo;
     private Date fechaMovimiento;
     private Integer idCuentaDestino;
-    private  Integer montoMov;
+    private Float montoMov;
 
     public Integer getIdCuenta() {
         return idCuenta;
@@ -53,7 +53,7 @@ public class UsuarioMovimiento {
         return idMovimiento;
     }
 
-    public Integer getMontoMov() {
+    public Float getMontoMov() {
         return montoMov;
     }
 
