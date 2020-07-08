@@ -20,7 +20,7 @@ CREATE TABLE Usuario_Cuenta(
     CBU INT(22) NOT NULL,
 	Saldo FLOAT NOT NULL,
     Fecha_Alta DATE NULL,
-    codigoComercio VARCHAR(8) NOT NULL,
+    codigoComercio VARCHAR(8) NULL,
     PRIMARY KEY(ID_Cuenta),
 CONSTRAINT FK_Usuario
 FOREIGN KEY(ID_Usuario)
@@ -52,7 +52,8 @@ FOREIGN KEY(ID_Cuenta)
 REFERENCES Usuario_Cuenta(ID_Cuenta)
 );
 
-CREATE USER 'springuser'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRANT ALL PRIVILEGES ON *.* TO 'springuser'@'%' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `banelco`.* TO 'springuser'@'%';
+CREATE USER 'springuser'@'localhost' IDENTIFIED BY 'ThePassword';
+GRANT ALL PRIVILEGES ON * . * TO 'springuser'@'localhost';
 
 SET GLOBAL time_zone = '-3:00';
 

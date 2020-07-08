@@ -1,4 +1,4 @@
-package com.bpservice.webservicebanelco;
+package banelco;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

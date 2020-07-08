@@ -1,18 +1,133 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.bp.banelco.com/"
-           targetNamespace="http://webservices.bp.banelco.com/" elementFormDefault="qualified">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.bp.banelco.com/" targetNamespace="http://webservices.bp.banelco.com/" elementFormDefault="qualified">
     <xs:element name="getEchoRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+                <xs:element minOccurs="0" name="mensaje" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-
     <xs:element name="getEchoResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" name="resultado" type="xs:string"/>
+                <xs:element minOccurs="0" name="resultado" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="realizarCashOut">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="terminal" type="xs:string" />
+                <xs:element minOccurs="0" name="codigoComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="CUITComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="cbuDestino" type="xs:string" />
+                <xs:element minOccurs="0" name="moneda" type="xs:string" />
+                <xs:element name="importe" type="xs:double" />
+                <xs:element minOccurs="0" name="nroSecuencia" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="realizarCashOutResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ticket" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="verificarCashOut">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="terminal" type="xs:string" />
+                <xs:element minOccurs="0" name="codigoComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="CUITComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="cbuDestino" type="xs:string" />
+                <xs:element minOccurs="0" name="moneda" type="xs:string" />
+                <xs:element name="importe" type="xs:double" />
+                <xs:element minOccurs="0" name="nroSecuencia" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="verificarCashOutResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ticket" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="registrarCuenta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="terminal" type="xs:string" />
+                <xs:element minOccurs="0" name="codigoComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="cuitComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="cbuDestino" type="xs:string" />
+                <xs:element minOccurs="0" name="moneda" type="xs:string" />
+                <xs:element name="importe" type="xs:double" />
+                <xs:element minOccurs="0" name="nroSecuencia" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="registrarCuentaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="titularidad" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="validarCuenta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="terminal" type="xs:string" />
+                <xs:element minOccurs="0" name="codigoComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="CUITComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="cbuDestino" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="validarCuentaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="titularidad" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="transferenciaVirtual">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="terminal" type="xs:string" />
+                <xs:element minOccurs="0" name="codigoComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="CUITComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="cbuDestino" type="xs:string" />
+                <xs:element minOccurs="0" name="moneda" type="xs:string" />
+                <xs:element name="importe" type="xs:double" />
+                <xs:element minOccurs="0" name="nroSecuencia" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="transferenciaVirtualResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ticket" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="verificarTransferenciaVirtual">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="terminal" type="xs:string" />
+                <xs:element minOccurs="0" name="codigoComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="CUITComercio" type="xs:string" />
+                <xs:element minOccurs="0" name="cbuDestino" type="xs:string" />
+                <xs:element minOccurs="0" name="moneda" type="xs:string" />
+                <xs:element name="importe" type="xs:double" />
+                <xs:element minOccurs="0" name="nroSecuencia" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="verificarTransferenciaVirtualResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ticket" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

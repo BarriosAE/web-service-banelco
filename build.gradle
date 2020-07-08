@@ -4,12 +4,12 @@ plugins {
 			id 'java'
 		}
 def app=[
-		group: 'com.prismamp.todopago' ,
+		group: 'banelco' ,
 		name: 'mockbe' ,
 		version: '0.0.1',
 		versionType: 'SNAPSHOT'
 ]
-group = 'com.bpservice'
+group = 'banelco'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
